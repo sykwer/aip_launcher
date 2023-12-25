@@ -268,8 +268,8 @@ def launch_setup(context, *args, **kwargs):
     container = ComposableNodeContainer(
         name="pandar_node_container",
         namespace="pointcloud_preprocessor",
-        package="rclcpp_components",
-        executable=LaunchConfiguration("container_executable"),
+        package="rclcpp_component_container_callback_isolated",
+        executable="component_container_callback_isolated",
         composable_node_descriptions=[
             pointcloud_component,
             self_crop_component,
