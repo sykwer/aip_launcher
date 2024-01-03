@@ -168,8 +168,8 @@ def launch_setup(context, *args, **kwargs):
     container = ComposableNodeContainer(
         name=LaunchConfiguration("container_name"),
         namespace="pointcloud_preprocessor",
-        package="rclcpp_components",
-        executable=LaunchConfiguration("container_executable"),
+        package="rclcpp_component_container_callback_isolated",
+        executable="component_container_callback_isolated",
         composable_node_descriptions=nodes,
         condition=UnlessCondition(LaunchConfiguration("use_pointcloud_container")),
         output="screen",

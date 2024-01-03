@@ -60,8 +60,8 @@ def launch_setup(context, *args, **kwargs):
     container = ComposableNodeContainer(
         name=LaunchConfiguration("container_name"),
         namespace="",
-        package="rclcpp_components",
-        executable=LaunchConfiguration("container_executable"),
+        package="rclcpp_component_container_callback_isolated",
+        executable="component_container_callback_isolated",
         composable_node_descriptions=[],
         condition=UnlessCondition(LaunchConfiguration("use_pointcloud_container")),
         output="screen",
@@ -76,8 +76,7 @@ def launch_setup(context, *args, **kwargs):
     # load concat or passthrough filter
     concat_loader = LoadComposableNodes(
         composable_node_descriptions=[concat_component],
-        target_container=target_container,
-        condition=IfCondition(LaunchConfiguration("use_concat_filter")),
+        target_container="pointcloud_container",
     )
 
     return [container, concat_loader]
